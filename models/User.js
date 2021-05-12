@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+const defaultPhotoURL = 'http://cdn.onlinewebfonts.com/svg/img_258083.png';
+
 const userSchema = new mongoose.Schema({
   name: {
     type: String,
