@@ -20,6 +20,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 db.init();
+
 app.use('/', indexRouter);
 
 // catch 404 and forward to error handler
@@ -35,7 +36,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  // TODO: error handle
+  res.send();
 });
 
 module.exports = app;
