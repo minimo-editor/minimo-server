@@ -2,7 +2,19 @@ const router = require('express').Router();
 const createError = require('http-errors');
 const Project = require('../models/Project');
 
-router.get('/', (req, res, next) => {
+router.get('/:address', async (req, res, next) => {
+  try {
+    let project = await Project.findOne({ address: req.params.address });
+
+    if (!project) {
+      next(createError(404, 'project by given address not found'));
+      return;
+    }
+
+    res.json({ ok: true, data: project });
+  } catch (error) {
+    next(createError(500, 'Internal Server Error'));
+  }
 });
 
 router.post('/', async (req, res, next) => {
@@ -12,11 +24,12 @@ router.post('/', async (req, res, next) => {
     backgroundColor,
     blocks,
     address,
+    creatorId,
   } = req.body;
 
   try {
     let project = await Project.create({
-      creatorId: 111111,
+      creatorId,
       category,
       concept,
       backgroundColor,
