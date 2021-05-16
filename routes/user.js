@@ -3,10 +3,11 @@ const createError = require('http-errors');
 const User = require('../models/User');
 
 router.get('/', (req, res, next) => {
+  res.json({ ok: true, data: { 'id': 1123123 }});
 });
 
 router.post('/', async (req, res, next) => {
-  const { email, name, photoURL } = req.body;
+  const { email, name, photoURL, idToken } = req.body;
 
   let user;
 
