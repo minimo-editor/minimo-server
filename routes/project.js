@@ -5,7 +5,7 @@ const Project = require('../models/Project');
 router.get('/:address', async (req, res, next) => {
   try {
     let project = await Project.findOne({ address: req.params.address });
-
+    console.log(project);
     if (!project) {
       next(createError(404, 'project by given address not found'));
       return;
@@ -13,6 +13,7 @@ router.get('/:address', async (req, res, next) => {
 
     res.json({ ok: true, data: project });
   } catch (error) {
+    console.log(error);
     next(createError(500, 'Internal Server Error'));
   }
 });
