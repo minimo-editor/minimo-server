@@ -15,6 +15,7 @@ app.use(logger('dev'));
 app.use(cors({
   origin: true,
   credentials: true,
+  methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
 }));
 
 app.use(express.json());
