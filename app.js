@@ -2,13 +2,12 @@ require('dotenv').config();
 
 const express = require('express');
 const createError = require('http-errors');
-const path = require('path');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const db = require('./configs/db');
+const dbInit = require('./loaders/db');
 
 const app = express();
 
@@ -17,12 +16,13 @@ app.use(cors({
   origin: true,
   credentials: true,
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-db.init();
+app.use(cookieParser());
+
+dbInit();
 
 app.use('/', indexRouter);
 
@@ -34,6 +34,7 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
+  console.log(err);
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
   err.status = err.status || 500;
