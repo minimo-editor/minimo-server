@@ -2,8 +2,6 @@
 
 미니모는 간단한 모바일 초대장, 카드 등을 드래그 앤 드롭으로 쉽게 제작할 수 있는 웹 에디터입니다.
 
-![메인사진](./public/assets/background.png)
-
 🔗  배포링크: [https://www.minimo.life](https://www.minimo.life/)
 
 🔗  frontend: [https://github.com/minimo-editor/minimo-client](https://github.com/minimo-editor/minimo-client)
@@ -88,7 +86,7 @@
     </section>
     ```
 
-     minim의 `json` 형식
+     minimo의 `json` 형식
 
     ```jsx
     {
