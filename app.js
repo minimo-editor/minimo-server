@@ -15,7 +15,7 @@ app.use(logger('dev'));
 app.use(cors({
   origin: true,
   credentials: true,
-  methods: "GET, HEAD, PUT, PATCH, POST, DELETE",
+  methods: 'GET, HEAD, PUT, PATCH, POST, DELETE',
 }));
 
 app.use(express.json());
@@ -37,9 +37,10 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   console.error(err);
   res.locals.message = err.message;
-  // res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
   err.status = err.status || 500;
-  res.json({ ok: false, error: err});
+
+  res.json({ ok: false, error: err });
 });
 
 module.exports = app;
