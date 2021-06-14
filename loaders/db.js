@@ -1,5 +1,5 @@
-const dbConfig = require('../configs/db');
 const mongoose = require('mongoose');
+const dbConfig = require('../configs/db');
 
 mongoose.connect(process.env.MONGO_URL, dbConfig);
 
